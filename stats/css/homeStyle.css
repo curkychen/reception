@@ -1,0 +1,123 @@
+.nav__button {
+    position: absolute;
+    z-index:400;
+    right:2.5%;
+    top:2.5%;
+    width: 2.25em;
+    cursor:pointer;
+    /*svg {*/
+    /*fill:white;*/
+    /*}*/
+}
+/*.nav__button svg {*/
+/*fill:white;*/
+/*}*/
+
+.nav{
+    display:block;
+    overflow:hidden;
+    transition: all .4s ease;
+    position: absolute;
+    width: 100%;
+    z-index:200;
+    background-color: rgba(0,0,0,.8);
+    height: 0;
+    /*ul{*/
+    /*list-style-type: none;*/
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+    /*}*/
+}
+
+.nav ul{
+    list-style-type: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav__items {
+    display:block;
+    transition:all .6s ease;
+    margin:0 auto;
+    width: 100%;
+    color:white;
+    text-align: center;
+    font-size: 2.2em;
+    padding-bottom:1em;
+    position: relative;
+    left:-20px;
+    top:35px;
+    opacity:0;
+    /*a {*/
+    /*text-decoration: none;*/
+    /*color:white;*/
+    /*font-family: 'suranna';*/
+    /*&:after {*/
+    /*display:block;*/
+    /*content: '';*/
+    /*padding-bottom:5px;*/
+    /*border-bottom: solid 1px #F4EFE7;*/
+    /*transform: scaleX(0.0001);*/
+    /*transition: transform 350ms ease-in-out;*/
+    /*}*/
+    /*&:hover:after {*/
+    /*transform: scaleX(.1);*/
+    /*}*/
+    /*}*/
+}
+
+.trytry {
+    color: white;
+    font-family: 'suranna';
+}
+
+.nav__items a{
+    text-decoration: none;
+    color:white;
+    font-family: 'suranna';
+    /*&:after {*/
+    /*display:block;*/
+    /*content: '';*/
+    /*padding-bottom:5px;*/
+    /*border-bottom: solid 1px #F4EFE7;*/
+    /*transform: scaleX(0.0001);*/
+    /*transition: transform 350ms ease-in-out;*/
+    /*}*/
+    /*&:hover:after {*/
+    /*transform: scaleX(.1);*/
+    /*}*/
+}
+
+
+.nav__items a::after{
+    display:block;
+    content: '';
+    padding-bottom:5px;
+    border-bottom: solid 1px #F4EFE7;
+    transform: scaleX(0.0001);
+    transition: transform 350ms ease-in-out;
+}
+
+.nav__items a:hover::after{
+    transform: scaleX(.1);
+}
+
+
+
+.is-expanded {
+    display:block;
+    height:100vh;
+}
+.is-fading-up {
+    top:0;
+
+    opacity:1;
+/*// Stagger the fade in of each elem.*/
+/*@for $i from 1 through 4 {*/
+/*&:nth-child(#{$i}) {*/
+    /*transition-delay:(0.2s * $i)*/
+/*}*/
+/*}*/
+}

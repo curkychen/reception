@@ -1,0 +1,327 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Stats Reception</title>
+        <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+        <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="node_modules/angular-permission/dist/angular-permission.js"></script>
+        <script type="text/javascript" src="node_modules/angular-permission/dist/angular-permission-ng.js"></script>
+        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="node_modules/moment/moment.js"></script>
+        <script type="text/javascript" src="node_modules/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+		<script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload-all.js"></script>
+		<script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
+        <script type="text/javascript" src="node_modules/angular-timeline/dist/angular-timeline.js"></script>
+        <script type="text/javascript" src="https://alvarotrigo.com/fullPage/jquery.fullPage.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/mainController.js"></script>
+        <!--<script type="text/javascript" src="js/peopleController.js"></script>-->
+        <script type="text/javascript" src="js/calendarController.js"></script>
+        <script type="text/javascript" src="js/courseListController.js"></script>
+        <script type="text/javascript" src="js/applicationsListController.js"></script>
+        <script type="text/javascript" src="js/hiringPageController.js"></script>
+        <script type="text/javascript" src="js/evaluationsController.js"></script>
+        <script type="text/javascript" src="js/keysController.js"></script>
+        <script type="text/javascript" src="js/roomsController.js"></script>
+        <script type="text/javascript" src="js/addTimeSlotController.js"></script>
+        <script type="text/javascript" src="js/addUserController.js"></script>
+        <script type="text/javascript" src="js/receptionController.js"></script>
+        <script type="text/javascript" src="js/homeController.js"></script>
+        <script type="text/javascript" src="js/imageSlides.js"></script>
+        <!--<script type="text/javascript" src="js/peopleShow.js"></script>-->
+        <!--&lt;!&ndash;additional js for people special&ndash;&gt;-->
+        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>-->
+        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>-->
+        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>-->
+        <link rel="stylesheet" type="text/css" href="css/PeopleOverlay.css">
+        <link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/imageGallary.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="css/schedule.css" />-->
+        <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">-->
+        <link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+        <!--<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
+
+        <!--<link rel="stylesheet" type="text/css" href="node_modules/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.css" />-->
+        <!--<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />-->
+        <!--<link rel="stylesheet" type="text/css" href="node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>-->
+        <!--<link rel="stylesheet" type="text/css" href="node_modules/angular-timeline/dist/angular-timeline.css"/>-->
+        <!--<div class="left"><h1>Department of Statistics</h1></div>-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+//                // Refresh the page every 15 minutes only if server is still up and running
+//                setInterval(function(){
+//                    $.ajax({
+//                        url: 'http://www.stat.cmu.edu/reception/',
+//                        timeout: 2000, // 2 seconds timeout
+//                        success: function(data) {
+//                            location.reload();
+//                            console.log('success');
+//                        },
+//                        error: function(data) {
+//                            console.log('error');
+//                        }
+//                    });
+//                }, 900000);
+
+                // Create two variable with the names of the months and days in an array
+                var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+                var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
+                // Create a newDate() object
+                setInterval( function() {
+                    var newDate = new Date();
+                    newDate.setDate(newDate.getDate());
+                    $('#DateTime').html(dayNames[newDate.getDay()] + ", " + monthNames[newDate.getMonth()] + ' '  + newDate.getDate() + ' ' + newDate.getFullYear());
+                },1000)
+
+                setInterval( function() {
+                    // Create a newDate() object and extract the seconds of the current time on the visitor's
+                    var seconds = new Date().getSeconds();
+                    // Add a leading zero to seconds value
+                    $("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+                },1000);
+
+                setInterval( function() {
+                    // Create a newDate() object and extract the minutes of the current time on the visitor's
+                    var minutes = new Date().getMinutes();
+                    // Add a leading zero to the minutes value
+                    $("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+                },1000);
+
+                setInterval( function() {
+                    // Create a newDate() object and extract the hours of the current time on the visitor's
+                    var hours = new Date().getHours();
+                    // Add a leading zero to the hours value
+                    $("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+                }, 1000);
+            });
+
+            $(document).ready(function () {
+                $('.nav__button').on('click',function(){
+                    $('.nav').toggleClass('is-expanded');
+                    $('.nav__items').toggleClass('is-fading-up');
+                });
+
+                $('#fullpage').fullpage();
+                $('.nav__items').on('click', function () {
+                    $('.nav__button').trigger("click");
+                });
+
+                // $('#box1').fullPage();
+            });
+        </script>
+        <!--<div class="right">-->
+            <!--<div class="clock">-->
+                <!--<div id="Date"></div>-->
+                <!--<ul class="time">-->
+                    <!--<li id="hours"> </li>-->
+                    <!--<li id="point">:</li>-->
+                    <!--<li id="min"> </li>-->
+                    <!--<li id="point">:</li>-->
+                    <!--<li id="sec"> </li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div id = "bar"></div>-->
+        <!--<div id = "bar2"></div>-->
+        <!--<div id = "bar3"></div>-->
+        <!--</div>-->
+        <!--<div class="nav__button">-->
+            <!--<svg viewBox="0 0 24 24">-->
+                <!--<path d="M0 0h24v24H0z" fill="none" />-->
+                <!--<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />-->
+            <!--</svg>-->
+        <!--</div>-->
+
+    </head>
+    <body ng-app="StatsInfo" ng-controller="mainControl">
+    <div class="leftTitle"><h1>Department of Statistics</h1></div>
+    <div class="right">
+        <div class="clock">
+            <div id="DateTime"></div>
+            <ul class="timeDiy">
+                <li id="hours"> </li>
+                <li id="point">:</li>
+                <li id="min"> </li>
+                <li id="point">:</li>
+                <li id="sec"> </li>
+            </ul>
+        </div>
+    </div>
+    <div id = "bar"></div>
+    <div id = "bar2"></div>
+    <div id = "bar3"></div>
+    </div>
+    <div class="nav__button">
+        <svg viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+    </div>
+
+        <!--<div class="container">-->
+            <!-- Static navbar -->
+            <!--<div class="navbar navbar-default" role="navigation">-->
+                <!--<div class="container-fluid">-->
+                    <!--<div>-->
+                        <!--<div class="col-md-10 col-sm-10">-->
+                            <!--<h1>Department Information System<br />-->
+                                <!--<small>Department of Statistics</small>-->
+                            <!--</h1>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="navbar-header">-->
+                        <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">-->
+                        <!--<span class="sr-only">Toggle navigation</span>-->
+                        <!--<span class="icon-bar"></span>-->
+                        <!--<span class="icon-bar"></span>-->
+                        <!--<span class="icon-bar"></span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--<nav class="nav">-->
+                    <!--<ul>-->
+                        <!--<li class="nav__items"><a href="#">Home</a></li>-->
+                        <!--<li class="nav__items"><a href="#/people">People</a></li>-->
+                        <!--<li class="nav__items"><a href="">Blog</a></li>-->
+                        <!--<li class="nav__items"><a href="">Work</a></li>-->
+                    <!--</ul>-->
+                <!--</nav>-->
+                    <!--<div class="navbar-collapse collapse">-->
+                <div class="nav">
+                        <!--<ul class="nav navbar-nav">-->
+                        <ul>
+                            <li ng-class="{active:isHome}"><div class="nav__items"><a href="#/home" ng-class="{ on: isHome }"><div class="trytry">Home</div></a></div></li>
+                            <li ng-class="{active:isPeople}"><div class="nav__items"><a href="#/people" ng-class="{ on: isPeople }"><div class="trytry">People</div></a></div></li>
+                            <!--<li ng-class="{active:isCourse}"><a href="#/courses" ng-class="{ on: isCourse }">Courses</a></li>-->
+                            <!--<li ng-class="{active: isKey}"><a href = "#/keys" ng-class = "{ on: isKey }">Keys</a></li>-->
+                            <!--<li ng-class="{active: isRoom}"><a href = "#/rooms" ng-class="{ on: isRoom }">Rooms</a></li>-->
+                            <!--<li ng-class="{active:isSchedule}"><a href="#/schedule" ng-class="{ on: isSchedule }">Scheduling</a></li>-->
+                            <!--<li ng-class="{active:isHiring}"><a href="#/hiring" ng-class="{ on: isHiring }">Hiring/Applying</a></li>-->
+                            <!--<li ng-class="{active:isApplication}"><a href = "#/applications" ng-class = "{ on: isApplication }">Applications</a></li>-->
+                            <!--<li ng-class="{active:isReception}"><a href="#/reception" ng-class= "{ on: isReception }">Reception</a></li>-->
+                            <!--<li ng-class="{active:isEvaluation}"><a href = "#/evaluations" ng-class = "{ on: isEvaluation }">Evaluations</a></li>-->
+                            <!--<li ng-class="{active:isFaculty}"><a href = "#/faculty" ng-class = "{ on: isFaculty }">Faculty Dashboard</a></li>-->
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                <!--</div>-->
+                <!--/.container-fluid -->
+            <!--</div>-->
+        
+            <!--<br />-->
+            <!--<div class="col-md-12">-->
+                <div ng-switch on="renderPath[ 0 ]">
+                    <div ng-switch-when="home">
+                        <div ng-include=" 'partials/home.html' "></div>
+                    </div>
+                    <div ng-switch-when="people">
+                        <div ng-include=" 'partials/people/people.html' "></div>
+                    </div>
+                    <!--<div ng-switch-when="courses">-->
+                        <!--<div ng-include=" 'partials/courses/course_list.html' "></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="schedule">-->
+                        <!--<div ng-include=" 'partials/ta_schedule/schedule.php' "></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="hiring">-->
+                        <!--<div ng-include=" 'partials/hiring/hiring.php' "></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="indiv">-->
+                        <!--<div ng-include=" 'partials/people/people.html/:id' "></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="thankYou">-->
+                        <!--<div ng-include=" 'partials/hiring/thankyou.html' "></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="addTime">-->
+                    	<!--<div ng-include=" 'partials/add_timeslot/add_timeslot_angular.php' "></div>-->
+					<!--</div>-->
+					<!--<div ng-switch-when="courseIndiv">-->
+						<!--<div ng-include=" 'partials/courses/course_list.html/:id' "></div>-->
+					<!--</div>-->
+					<!--<div ng-switch-when="addUser">-->
+						<!--<div ng-include=" 'partials/authentication/add_user.php' "></div>-->
+					<!--</div>-->
+					<!--<div ng-switch-when="keys">-->
+						<!--<div ng-include=" 'partials/keys/key_list.html' "></div>-->
+					<!--</div>-->
+
+					<!--<div ng-switch-when="rooms">-->
+						<!--<div ng-include=" 'partials/rooms/room_list.html' "></div>-->
+					<!--</div>-->
+
+                    <!--<div ng-switch-when="applications">-->
+                        <!--<div ng-include=" 'partials/applications/applications_list.html' "></div>-->
+                    <!--</div>-->
+
+                     <!--<div ng-switch-when="reception">-->
+                        <!--<div ng-include=" 'partials/reception/manage.html' "></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="evaluations">-->
+                        <!--<div ng-include=" 'partials/evaluations/evaluations_list.html' "></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="faculty">-->
+                        <!--<div ng-include=" 'partials/faculty_dashboard/dashboard.html' "></div>-->
+                    <!--</div>-->
+
+
+                </div>
+            <!--</div>-->
+            <!--<div class="col-md-12">-->
+            	<!--<br />-->
+            <!--</div>-->
+            <!--<div class="col-md-12 footer">-->
+				<!--<br>-->
+            	<!--<div class="col-md-4">-->
+            		<!--<h4>Carnegie Mellon University</h4>-->
+			 			<!--<address> <strong>Statistics Department</strong><br>-->
+			 			 <!--Baker Hall 132<br>-->
+			 			 <!--Pittsburgh PA, 15213<br>-->
+			 			 <!--Phone: (412) 268-2717<br />-->
+			 			 <!--Fax: (412) 268-7828</address>-->
+            	<!--</div>-->
+            	<!--<div class="col-md-4">-->
+            		<!--<h4>Contact</h4>-->
+            		<!--<u>Admissions:</u> -->
+            		<!--<ul>-->
+            			<!--<li>-->
+            				<!--admissions@stat.cmu.edu-->
+            			<!--</li>-->
+            		<!--</ul>-->
+            		<!--<u>Academics:</u> -->
+            		<!--<ul>-->
+						<!--<li>-->
+							<!--acadcoord@stat.cmu.edu    -->
+						<!--</li>-->
+            		<!--</ul>-->
+            	<!---->
+            	<!--</div>-->
+            	<!--<div class="col-md-4">-->
+            		<!--<h4>External Links</h4>-->
+            		<!--<ul>-->
+						<!--<li>-->
+							<!--<a href="http://www.stat.cmu.edu">Statistics Department Home</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="http://www.cmu.edu">Carnegie Mellon University</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="http://www.hss.cmu.edu">Dietrich College of Humanities and Social Sciences</a>-->
+						<!--</li>-->
+            		<!--</ul>-->
+            	<!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-12">-->
+            	<!--<br />-->
+            <!--</div>-->
+        <!--</div>-->
+    </body>
+</html>

@@ -1,0 +1,265 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    overflow:hidden;
+}
+
+.leftTitle {
+    /*float: left;*/
+    margin-left: 100px;
+    /*font-family: "Roboto", sans-serif;*/
+    font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+}
+
+.right {
+    margin-right: 100px;
+    font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+}
+
+#clear {
+    clear: both;
+}
+
+img {
+    margin-bottom:-7px;
+}
+
+.imgright {
+    float: right;
+    margin: 50px;
+}
+
+#box2 .imgright {
+    float: right;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.h2title {
+    font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    color: #FFFFFF;
+    /*background-color:#930606;*/
+    /*border: 3px solid #930606;*/
+    text-align: center;
+    border-radius: 5px;
+    font-size: 60px;
+}
+
+/*@font-face {*/
+    /*font-family: 'BebasNeueRegular';*/
+    /*src: url('BebasNeue-webfont.eot');*/
+    /*src: url('BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),*/
+    /*url('BebasNeue-webfont.woff') format('woff'),*/
+    /*url('BebasNeue-webfont.ttf') format('truetype'),*/
+    /*url('BebasNeue-webfont.svg#BebasNeueRegular') format('svg');*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
+/*}*/
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.clock {
+    margin:0 auto;
+    padding-top: 26px;
+}
+
+#DateTime {
+    font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    text-align: right;
+}
+
+/*ul {*/
+/*margin:0 auto;*/
+/*padding:0px;*/
+/*list-style:none;*/
+/*text-align:right;*/
+/*}*/
+
+.timeDiy {
+    margin:0 auto;
+    padding:0px;
+    list-style:none;
+    text-align:right;
+}
+
+.timeDiy li {
+    display:inline;
+    font-size: 35px;
+    text-align:right;
+    font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+}
+
+/*ul li {*/
+/*display:inline;*/
+/*font-size: 35px;*/
+/*text-align:right;*/
+/*font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;*/
+/*}*/
+
+#point {
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#box p {
+    margin: 40px;
+    font-size: 20pt;
+}
+
+p {
+    margin: 40px;
+}
+
+
+h2 {
+    font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    font-size: 30pt;
+}
+
+h3 {
+    font-size: 22pt;
+}
+
+h4 {
+    font-size: 22px;
+}
+
+#datebox, #clockbox {
+    font-family: Georgia, Serif;
+    text-align: center;
+    font-size: 26pt;
+}
+
+#box {
+    width: 91%;
+    margin: 0 auto;
+}
+#bar{
+    position:absolute;
+    left:0px;
+    top:117px;
+    z-index:1;
+
+    width:100%;
+    height:13px;
+    background-color:#000000;
+    margin-top:-4px;
+}
+#bar2{
+    position:absolute;
+    left:0px;
+    top:158px;
+    z-index:2;
+    width:100%;
+    height:32px;
+    background-color:#000000;
+}
+#bar3{
+    position:absolute;
+    left:0px;
+    top:208px;
+    z-index:3;
+    width:100%;
+    height:8px;
+    background-color:#000000;
+}
+#box1 {
+    position:absolute;
+    left:0px;
+    top:130px;
+    z-index:-1;
+    width: 100%;
+    margin-top:-140px;
+    margin-left:-10px;
+    margin-right:auto;
+    float: left;
+    font-size: 21px;
+    padding-top:0px;
+    vertical-align:top;
+    padding-right:0px;
+    padding-bottom:0px;
+
+}
+
+h1 {
+    position:absolute;
+    left:50px;
+    top:-10px;
+    z-index:0;
+    font-size: 70pt;
+    font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+    margin-top: 10px;
+
+}
+
+.shadowbox {
+    border: 2px solid #efefef;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 2px #b6b6b6;
+    height: 1095px;
+}
+
+#seminarpic {
+    float: right;
+    padding-right: 100px;
+}
+
+#seminar {
+    padding-left: 50px;
+}
+
+#seminarinfo {
+    width: 60%;
+    padding-right: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+#defenseinfo {
+    padding: 15px;
+}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+}
+
+/*.footer{*/
+    /*font-size:35;*/
+    /*position: relative;*/
+
+    /*top:500px;*/
+/*}*/
+#scrollbar{
+    position:absolute;
+    z-index:5;
+    right:0px;
+    margin-top:940px;
+    font-size: 35px;
+
+}
+#footbar{
+    position:absolute;
+    left:0px;
+    top:1056px;
+    z-index:4;
+    width:100%;
+    height:35px;
+    background-color:#ffffff;
+}
