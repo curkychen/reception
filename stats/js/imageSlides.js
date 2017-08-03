@@ -3,9 +3,9 @@
  */
 AppControl.controller('UserList', ['$scope', '$filter', '$route', '$location', '$routeParams', '$http', function($scope, $filter, $route, $location, $routeParams, $http) {
     console.log("enter image controller");
-    var m;
-    var n;
-    var j;
+    var m = 0;
+    var n = 1;
+    var j = 2;
     var i = 0;
     $http.get('partials/get/faculty_info.php').success(function (data) {
         // $scope.users = parse.JSON(data);
@@ -23,6 +23,12 @@ AppControl.controller('UserList', ['$scope', '$filter', '$route', '$location', '
         }
         console.log(temparray[1].image_link);
         $scope.users = temparray;
+        $scope.leftImage = temparray[m].image_link;
+        $scope.centerImage = temparray[n].image_link;
+        $scope.rightImage = temparray[j].image_link;
+        console.log($scope.leftImage);
+        console.log($scope.centerImage);
+        console.log(($scope.rightImage));
 
         // console.log(test[1]['image_link']);
         // console.log(typeof test[1]['image_link']);
